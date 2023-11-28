@@ -1,7 +1,7 @@
 # tomputer-g.github.io
 Hello World!
 
-This site is still under construction.
+This is my personal website. It may be updated somewhat semi-frequently.
 
 
 ## Template used
