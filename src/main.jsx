@@ -6,6 +6,7 @@ import SandboxPage from './pages/Sandbox.jsx'
 import Recipes from './pages/Recipes.jsx'
 import RecipePage from './pages/RecipePage.jsx'
 import GaugeSandbox from './pages/GaugeSandbox.jsx'
+import TimeMan from './pages/TimeMan.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -16,6 +17,7 @@ createRoot(document.getElementById('root')).render(
         <Route path="/gauge_sandbox" element={<GaugeSandbox />} />
         <Route path="/recipes" element={<Recipes />} />
         <Route path="/recipes/:slug" element={<RecipePage />} />
+        <Route path="/timeman" element={<TimeMan />} />
       </Routes>
     </BrowserRouter>
   </StrictMode>,
