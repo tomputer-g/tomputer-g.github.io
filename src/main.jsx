@@ -7,6 +7,7 @@ import Recipes from './pages/Recipes.jsx'
 import RecipePage from './pages/RecipePage.jsx'
 import GaugeSandbox from './pages/GaugeSandbox.jsx'
 import TimeMan from './pages/TimeMan.jsx'
+import QrMemo from './pages/QrMemo.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -18,6 +19,7 @@ createRoot(document.getElementById('root')).render(
         <Route path="/recipes" element={<Recipes />} />
         <Route path="/recipes/:slug" element={<RecipePage />} />
         <Route path="/timeman" element={<TimeMan />} />
+        <Route path="/qr/:id" element={<QrMemo />} />
       </Routes>
     </BrowserRouter>
   </StrictMode>,
