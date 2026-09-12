@@ -1,0 +1,154 @@
+{
+	"version": 1,
+	"header_image": "",
+	"allow_edit": true,
+	"plugins": [
+		"plugins/stat_overlay.js"
+	],
+	"panes": [
+		{
+			"title": "Aviation Weather",
+			"width": 2,
+			"col_width": 2,
+			"row": {
+				"1": 1,
+				"2": 1,
+				"3": 1,
+				"4": 1
+			},
+			"col": {
+				"1": 1,
+				"2": 1,
+				"3": 1,
+				"4": 1
+			},
+			"widgets": [
+				{
+					"type": "html",
+					"settings": {
+						"html": "return '<iframe src=\"https://aviationweather.gov\" style=\"width:100%;height:800px;border:none;border-radius:4px;background:#ffffff;\" title=\"Aviation Weather\"></iframe>';",
+						"height": 14
+					}
+				}
+			]
+		},
+		{
+			"title": "Pittsburgh Temperature",
+			"width": 1,
+			"col_width": 1,
+			"row": {
+				"1": 2,
+				"2": 2,
+				"3": 1,
+				"4": 1
+			},
+			"col": {
+				"1": 1,
+				"2": 2,
+				"3": 3,
+				"4": 3
+			},
+			"widgets": [
+				{
+					"type": "stat_overlay",
+					"settings": {
+						"title": "Current Temperature",
+						"value": "datasources[\"PittsburghWeather\"] && datasources[\"PittsburghWeather\"][\"current\"] ? datasources[\"PittsburghWeather\"][\"current\"][\"temperature_2m\"] : 75",
+						"units": "°F",
+						"color": "#FF9900",
+						"history_points": 30,
+						"show_range": true,
+						"height": 2
+					}
+				}
+			]
+		},
+		{
+			"title": "Pittsburgh Humidity",
+			"width": 1,
+			"col_width": 1,
+			"row": {
+				"1": 3,
+				"2": 3,
+				"3": 6,
+				"4": 6
+			},
+			"col": {
+				"1": 1,
+				"2": 2,
+				"3": 3,
+				"4": 3
+			},
+			"widgets": [
+				{
+					"type": "stat_overlay",
+					"settings": {
+						"title": "Relative Humidity",
+						"value": "datasources[\"PittsburghWeather\"] && datasources[\"PittsburghWeather\"][\"current\"] ? datasources[\"PittsburghWeather\"][\"current\"][\"relative_humidity_2m\"] : 65",
+						"units": "%",
+						"color": "#13F7F9",
+						"history_points": 30,
+						"show_range": true,
+						"height": 2
+					}
+				}
+			]
+		},
+		{
+			"title": "Live Metric (Simulated Stream)",
+			"width": 1,
+			"col_width": 1,
+			"row": {
+				"1": 4,
+				"2": 4,
+				"3": 11,
+				"4": 11
+			},
+			"col": {
+				"1": 1,
+				"2": 2,
+				"3": 3,
+				"4": 3
+			},
+			"widgets": [
+				{
+					"type": "stat_overlay",
+					"settings": {
+						"title": "Simulated GPU Memory",
+						"value": "datasources[\"SimulatedMetric\"]",
+						"units": "%",
+						"color": "#28DE28",
+						"history_points": 35,
+						"show_range": true,
+						"height": 2
+					}
+				}
+			]
+		}
+	],
+	"datasources": [
+		{
+			"name": "PittsburghWeather",
+			"type": "JSON",
+			"settings": {
+				"url": "https://api.open-meteo.com/v1/forecast?latitude=40.4406&longitude=-79.9959&current=temperature_2m,relative_humidity_2m&temperature_unit=fahrenheit",
+				"use_thingproxy": false,
+				"refresh": 30,
+				"method": "GET"
+			}
+		},
+		{
+			"name": "SimulatedMetric",
+			"type": "fake_scalar",
+			"settings": {
+				"base_value": 78,
+				"variance": 2.2,
+				"min_value": 45,
+				"max_value": 98,
+				"history_points": 35,
+				"refresh_interval": 2
+			}
+		}
+	],
+	"columns": 3
+}

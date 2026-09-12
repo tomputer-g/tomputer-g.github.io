@@ -10,6 +10,7 @@ import TimeMan from './pages/TimeMan.jsx'
 import QrMemo from './pages/QrMemo.jsx'
 import Guitar from './pages/Guitar.jsx'
 import GuitarTab from './pages/GuitarTab.jsx'
+import Dashboard from './pages/Dashboard.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -24,6 +25,8 @@ createRoot(document.getElementById('root')).render(
         <Route path="/qr/:id" element={<QrMemo />} />
         <Route path="/guitar" element={<Guitar />} />
         <Route path="/guitar/:slug" element={<GuitarTab />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/freeboard" element={<Dashboard />} />
       </Routes>
     </BrowserRouter>
   </StrictMode>,
